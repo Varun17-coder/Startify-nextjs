@@ -65,6 +65,7 @@ const page = async ({params}:{params:Promise<{id:string}>}) => {
       {/* Todo: Editor selected startups */}
      
             {/* Skeleton is from shadcn */}
+            {/* this is dynamic component so wrap it up in suspense tag learn more about it in docs */}
       <Suspense fallback={<Skeleton className='view_skeleton'/>}> 
         <View id={id}/>
       </Suspense>
