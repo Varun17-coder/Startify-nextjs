@@ -8,6 +8,8 @@ import React from 'react'
 import UserStartups from '@/components/UserStartups';
 import { StartupCardSkeleton } from '@/components/StartupCard';
 
+export const experimental_ppr = true;
+
 const page = async ({params}:{params: Promise<{id:string}>}) => {
     const id =(await params).id;
     const session = await auth();
