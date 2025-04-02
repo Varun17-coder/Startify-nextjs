@@ -40,7 +40,7 @@ export const AUTHOR_BY_GITHUB_ID_QUERY= defineQuery(`
   _id,
   id,
   name,
-  usename,
+  username,
   email,
   image,
   bio

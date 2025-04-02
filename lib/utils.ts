@@ -9,3 +9,7 @@ export const formatDate = (date: string): string => {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(date).toLocaleDateString(undefined, options);
 }
+
+export function parseServerActionResponse<T>(response:T){
+  return JSON.parse(JSON.stringify(response))
+}
