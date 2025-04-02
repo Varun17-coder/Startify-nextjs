@@ -3,6 +3,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "./ui/button";
 import { Author, Startup } from "@/sanity/types";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 export type StartupTypeCard = Omit<Startup, "author"> & {author?:Author};
 
@@ -38,7 +40,13 @@ const StartupCard = ({post}:{post: StartupTypeCard }) => {
                 </Link>
             </div>
             <Link href={`/user/${author?._id}`}>
-            <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full"/> 
+            <Image 
+            // src="https://placehold.co/48x48" 
+            src={author?.image!} 
+            alt={author?.name!} 
+            width={48} 
+            height={48} 
+            className="rounded-full"/> 
             {/* // this placehold.co wont render unless we specify it in next.config.js */}
             </Link>
         </div>
@@ -58,4 +66,14 @@ const StartupCard = ({post}:{post: StartupTypeCard }) => {
   )
 }
 
+export const StartupCardSkeleton = ()=>(
+    //if we returning teh jsx fromat we sould wrap things under () not {}
+    <>
+    {[0,1,2,3,4].map((index: number)=>(
+        <li key={cn("skeleton", index)}>
+            <Skeleton className="startup-card_skeleton"/>
+        </li>
+    ))}
+    </>
+)
 export default StartupCard
